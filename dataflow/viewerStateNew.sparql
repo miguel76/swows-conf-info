@@ -1,0 +1,53 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    a :DataViewer ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :section :Home ;
+    :menuState ?menuState ;
+    :content ?content ;
+    :dependentData ?menuState, ?content .
+  ?menuState
+    a :Popping ;
+    :startPos ?menuStartPos ;
+    :startTime ?updateTime ;
+    :stateCounter "1"^^xsd:integer .
+  ?content
+    a :ImageContent ;
+    :uri ?imageUri ;
+    :title ?groupDescr ; 
+    :orderInSection "1"^^xsd:integer .
+}
+WHERE {
+  ?object a tuio:Object .
+  ?object tuio:markerId ?markerId .
+  tuio:defaultSource tuio:updateTime ?updateTime .
+  GRAPH :config {
+    swi:GraphRoot
+      :menuStartPos ?menuStartPos ;
+      :baseDataPath ?baseDataPath
+  } .
+  GRAPH :groupData {
+    ?group
+      a :Group ;
+      :markerId ?markerId ;
+      :descr ?groupDescr ;
+      :mainPicture ?mainPicture
+  } .
+  FILTER NOT EXISTS {
+    GRAPH :viewerState {
+      ?dataViewer
+      a :DataViewer ;
+      :markerId ?markerId  } } .
+  BIND( URI(CONCAT( STR(:dataViewer_), MD5( STR(?object) ) ) ) AS ?dataViewer ) .
+  BIND( URI(CONCAT( STR(:menuState_), MD5( STR(?object) ) ) ) AS ?menuState ) .
+  BIND( URI(CONCAT( STR(:content_), MD5( STR(?object) ) ) ) AS ?content ) .
+  BIND( CONCAT( ?baseDataPath, ?mainPicture ) AS ?imageUri ) .
+}
+

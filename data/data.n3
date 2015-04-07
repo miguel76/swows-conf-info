@@ -1,0 +1,80 @@
+@prefix :        <http://www.cattid.uniroma1.it/2012/arduinoDay#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix swi:   <http://www.swows.org/instance#> .
+
+swi:GraphRoot
+  :baseImageDir "../data/FotoProgetti/"^^xsd:string .
+
+:Arduino
+  a :Group ;
+  :name "Officine Arduino"^^xsd:string ;
+  :descr "Uno spazio per costruire il futuro"^^xsd:string ;
+  :twitterUserName "arduino"^^xsd:string ;
+  :mainPicture "Arduino.jpg"^^xsd:string ;
+  :logo "Arduino/Logo.jpg"^^xsd:string ;
+  :markerId "90"^^xsd:integer .
+
+:ScuolaRobotica
+  a :Group ;
+  :name "Scuola di Robotica"^^xsd:string ;
+  :descr "Associazione per la robotica"^^xsd:string ;
+  :twitterUserName "ScuolaRobotica"^^xsd:string ;
+  :mainPicture "ScuolaRobotica.jpg"^^xsd:string ;
+  :logo "ScuolaRobotica/Logo.jpg"^^xsd:string ;
+  :markerId "92"^^xsd:integer .
+
+:MondoDigitale
+  a :Group ;
+  :name "Fondazione Mondo Digitale"^^xsd:string ;
+  :descr "Fondazione per le tecnologie digitali"^^xsd:string ;
+  :twitterUserName "fmdigitale"^^xsd:string ;
+  :mainPicture "MondoDigitale.jpg"^^xsd:string ;
+  :logo "MondoDigitale/Logo.jpg"^^xsd:string ;
+  :markerId "96"^^xsd:integer .
+
+:ElettronicaIn
+  a :Group ;
+  :name "Elettronica IN"^^xsd:string ;
+  :descr "Rivista di elettronica applicata"^^xsd:string ;
+  :twitterUserName "ElettronicaIn1"^^xsd:string ;
+  :mainPicture "ElettronicaIn.jpg"^^xsd:string ;
+  :logo "ElettronicaIn/Logo.jpg"^^xsd:string ;
+  :markerId "101"^^xsd:integer .
+
+:GAUSS
+  a :Group ;
+  :name "GAUSS"^^xsd:string ;
+  :descr "Gruppo di Astrodinamica - Sapienza"^^xsd:string ;
+  :mainPicture "GAUSS.jpg"^^xsd:string ;
+  :logo "GAUSS/Logo.jpg"^^xsd:string ;
+  :markerId "99"^^xsd:integer .
+
+:DiScienza
+  a :Group ;
+  :name "DiScienza"^^xsd:string ;
+  :descr "Associazione per la divulgazione scientifica"^^xsd:string ;
+  :twitterUserName "DiScienza"^^xsd:string ;
+  :mainPicture "DiScienza.jpg"^^xsd:string ;
+  :logo "DiScienza/Logo.jpg"^^xsd:string ;
+  :markerId "98"^^xsd:integer .
+
+:NYUPoly
+  a :Group ;
+  :name "NYU Poly"^^xsd:string ;
+  :descr "Polytechnic Institute of NY University"^^xsd:string ;
+  :twitterUserName "nyupoly"^^xsd:string ;
+  :mainPicture "NYUPoly.jpg"^^xsd:string ;
+  :logo "NYUPoly/Logo.jpg"^^xsd:string ;
+  :markerId "95"^^xsd:integer .
+
+:CATTID
+  a :Group ;
+  :name "CATTID"^^xsd:string ;
+  :descr "Laboratorio di Ricerca - Sapienza"^^xsd:string ;
+  :twitterUserName "CATTIDSAPIENZA"^^xsd:string ;
+  :mainPicture "CATTID.jpg"^^xsd:string ;
+  :logo "CATTID/Logo.jpg"^^xsd:string ;
+  :markerId "93"^^xsd:integer .
+
+
+

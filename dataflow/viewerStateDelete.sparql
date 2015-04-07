@@ -1,0 +1,22 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?s ?p ?o .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    ?object a tuio:Object .
+    ?object tuio:markerId ?markerId } .
+  GRAPH :viewerState {
+    ?dataViewer
+      a :DataViewer ;
+      :markerId ?markerId ;
+      :dependentData* ?s .
+    ?s ?p ?o .
+  } .
+}
+

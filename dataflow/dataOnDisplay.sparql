@@ -1,0 +1,34 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    a :DataViewer ;
+    :posX ?dataPosX ;
+    :posY ?dataPosY ;
+    :angle ?dataAngle .
+}
+WHERE {
+  ?object a tuio:Object .
+  ?object tuio:position ?point .
+  ?point tuio:x ?objectX .
+  ?point tuio:y ?objectY .
+  ?object tuio:angle ?objectAngle .
+  GRAPH :config {
+    swi:GraphRoot
+      :vpWidth ?vpWidth ;
+      :vpHeight ?vpHeight ;
+      :markerPosX ?markerPosX ;
+      :markerPosY ?markerPosY .
+  } .
+#  BIND( ?objectX * xsd:double(?vpWidth) - ?markerPosX AS ?dataPosX ) .
+#  BIND( ?objectY * xsd:double(?vpHeight) - ?markerPosY AS ?dataPosY ) .
+  BIND( ?objectX * xsd:double(?vpWidth) AS ?dataPosX ) .
+  BIND( ?objectY * xsd:double(?vpHeight) AS ?dataPosY ) .
+  BIND( ?objectAngle * 180 / afn:pi() + 90 AS ?dataAngle ) .
+  BIND( URI(CONCAT( STR(:dataViewer_), MD5( STR(?object) ) ) ) AS ?dataViewer ) .
+}
+

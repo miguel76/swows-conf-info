@@ -1,0 +1,24 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    a :DataViewer ;
+    :markerId ?markerId ;
+    :section :Home .
+}
+WHERE {
+  ?object a tuio:Object .
+  ?object tuio:markerId ?markerId .
+  tuio:defaultSource tuio:updateTime ?updateTime .
+  GRAPH :groupData {
+    ?group
+      a :Group ;
+      :markerId ?markerId .
+  } .
+  BIND( URI(CONCAT( STR(:dataViewer_), MD5( STR(?object) ) ) ) AS ?dataViewer ) .
+}
+

@@ -1,0 +1,167 @@
+@prefix :        <http://www.cattid.uniroma1.it/2012/arduinoDay#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix swi:   <http://www.swows.org/instance#> .
+
+:Arduino
+:project :OfficineArduino.
+
+:OfficineArduino
+  a :Project ;
+  :name "OfficineArduino" ;
+  :baseDir "Arduino/PROGETTI/OfficineArduino/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg" .
+
+:ScuolaRobotica
+:project :LaboratoriCorsi.
+
+:LaboratoriCorsi
+  a :Project ;
+  :name "LaboratoriCorsi" ;
+  :baseDir "ScuolaRobotica/PROGETTI/LaboratoriCorsi/" ;
+  :image "01.jpg", "02.jpg", "03.jpg" .
+
+:MondoDigitale
+  :project :Workshop, :RomeCup.
+
+:Workshop
+  a :Project ;
+  :name "Workshop" ;
+  :baseDir "MondoDigitale/PROGETTI/Workshop/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg" .
+
+:RomeCup
+  a :Project ;
+  :name "RomeCup" ;
+  :baseDir "MondoDigitale/PROGETTI/RomeCup/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg" .
+
+:ElettronicaIn
+:project :RivistaElettronicaIn, :TiDiGino.
+
+:RivistaElettronicaIn
+  a :Project ;
+  :name "RivistaElettronicaIn" ;
+  :baseDir "ElettronicaIn/PROGETTI/RivistaElettronicaIn/" ;
+  :image "01.jpg", "02.jpg" .
+
+:TiDiGino
+  a :Project ;
+  :name "TiDiGino" ;
+  :baseDir "ElettronicaIn/PROGETTI/TiDiGino/" ;
+  :image "01.jpg" .
+
+:GAUSS
+:project :ProgettoMosca, :UnicubesatGG.
+
+:ProgettoMosca
+  a :Project ;
+  :name "ProgettoMosca" ;
+  :baseDir "GAUSS/PROGETTI/ProgettoMosca/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:UnicubesatGG
+  a :Project ;
+  :name "UnicubesatGG" ;
+  :baseDir "GAUSS/PROGETTI/UnicubesatGG/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:DiScienza
+:project :ArduinoDay2011, :FestivalScienzeGenova, :NotteRicercatori.
+
+:ArduinoDay2011
+  a :Project ;
+  :name "ArduinoDay2011" ;
+  :baseDir "DiScienza/PROGETTI/ArduinoDay2011/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:FestivalScienzeGenova
+  a :Project ;
+  :name "FestivalScienzeGenova" ;
+  :baseDir "DiScienza/PROGETTI/FestivalScienzeGenova/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:NotteRicercatori
+  a :Project ;
+  :name "NotteRicercatori" ;
+  :baseDir "DiScienza/PROGETTI/NotteRicercatori/" ;
+  :image "01.jpg", "02.jpg", "03.jpg" .
+
+:NYUPoly
+:project :PesceRobotico.
+
+:PesceRobotico
+  a :Project ;
+  :name "PesceRobotico" ;
+  :baseDir "NYUPoly/PROGETTI/PesceRobotico/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:CATTID
+:project :Allergine, :Ardusumo, :Frontiers, :MobileApp, :NextStop, :ParcoAppiaAntica, :PLamp, :RomaEuropaFestival, :TestUsabilita, :TheFutureMood, :TheItalianMood.
+
+:Allergine
+  a :Project ;
+  :name "Allergine" ;
+  :baseDir "CATTID/PROGETTI/Allergine/" ;
+  :image "01.jpg", "02.jpg" .
+
+:Ardusumo
+  a :Project ;
+  :name "Ardusumo" ;
+  :baseDir "CATTID/PROGETTI/Ardusumo/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:Frontiers
+  a :Project ;
+  :name "Frontiers" ;
+  :baseDir "CATTID/PROGETTI/Frontiers/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:MobileApp
+  a :Project ;
+  :name "MobileApp" ;
+  :baseDir "CATTID/PROGETTI/MobileApp/" ;
+  :image "01.jpg", "02.jpg" .
+
+:NextStop
+  a :Project ;
+  :name "NextStop" ;
+  :baseDir "CATTID/PROGETTI/NextStop/" ;
+  :image "01.jpg", "02.jpg", "03.jpg" .
+
+:ParcoAppiaAntica
+  a :Project ;
+  :name "ParcoAppiaAntica" ;
+  :baseDir "CATTID/PROGETTI/ParcoAppiaAntica/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:PLamp
+  a :Project ;
+  :name "PLamp" ;
+  :baseDir "CATTID/PROGETTI/PLamp/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:RomaEuropaFestival
+  a :Project ;
+  :name "RomaEuropaFestival" ;
+  :baseDir "CATTID/PROGETTI/RomaEuropaFestival/" ;
+  :image "01.jpg", "02.jpg" .
+
+:TestUsabilita
+  a :Project ;
+  :name "TestUsabilita" ;
+  :baseDir "CATTID/PROGETTI/TestUsabilita/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:TheFutureMood
+  a :Project ;
+  :name "TheFutureMood" ;
+  :baseDir "CATTID/PROGETTI/TheFutureMood/" ;
+  :image "01.jpg", "02.jpg" .
+
+:TheItalianMood
+  a :Project ;
+  :name "TheItalianMood" ;
+  :baseDir "CATTID/PROGETTI/TheItalianMood/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg" .
+
+

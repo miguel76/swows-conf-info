@@ -1,0 +1,10 @@
+@prefix :        <http://www.cattid.uniroma1.it/2012/arduinoDay#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix swi:   <http://www.swows.org/instance#> .
+
+swi:GraphRoot
+  :vpWidth "1024"^^xsd:integer ;
+  :vpHeight "768"^^xsd:integer ;
+  :markerPosX "161"^^xsd:double ;
+  :markerPosY "289"^^xsd:double .
+

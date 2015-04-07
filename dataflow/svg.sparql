@@ -1,0 +1,38 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX xml:   <http://www.swows.org/xml#>
+PREFIX doc:   <http://www.swows.org/xml/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+
+  doc:layer_polaroid xml:hasChild ?use_polaroid .
+  ?use_polaroid 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "use"^^xsd:string ;
+    xml:hasAttribute ?href_polaroid, ?transform_polaroid .
+  ?href_polaroid
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue "#polaroid"^^xsd:string .
+  ?transform_polaroid
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue ?translate_polaroid .
+
+}
+WHERE {
+  ?dataViewer
+    a :DataViewer ;
+    :posX ?dataPosX ;
+    :posY ?dataPosY ;
+    :angle ?dataAngle .
+  BIND( URI( CONCAT( STR(:use_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?use_polaroid ) .
+  BIND( URI( CONCAT( STR(:href_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?href_polaroid ) .
+  BIND( URI( CONCAT( STR(:transform_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?transform_polaroid ) .
+  BIND( CONCAT( "translate(", STR(?dataPosX), " ", STR(?dataPosY), ") rotate(", STR(?dataAngle), ")" ) AS ?translate_polaroid ) .
+}
+
