@@ -1,0 +1,74 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+PREFIX fs:    <http://www.swows.org/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    a :DataViewer ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :state ?state ;
+    :dependentData ?state, ?menuNewState .
+  ?state
+    :menuState ?menuNewState ;
+    :sectionState ?sectionState ;
+    :contentState ?contentState ;
+    :stateCounter ?newStateCounter .
+  ?menuNewState
+    a :Dragging ;
+    :cursor ?cursor .
+}
+WHERE {
+  ?object
+    a tuio:Object ;
+    tuio:position ?objectPoint ;
+    tuio:angle ?objectAngle ;
+    tuio:markerId ?markerId .
+  ?objectPoint
+    tuio:x ?objectX ;
+    tuio:y ?objectY .
+  ?cursor
+    a tuio:Cursor ;
+    tuio:position ?point .
+  ?point
+    tuio:x ?cursorX ;
+    tuio:y ?cursorY .
+  tuio:defaultSource tuio:updateTime ?updateTime .
+  GRAPH :config {
+    swi:GraphRoot
+      :vpWidth ?vpWidth ;
+      :vpHeight ?vpHeight ;
+      :markerPosX ?markerPosX ;
+      :markerPosY ?markerPosY ;
+      :menuStartPos ?menuStartPos ;
+      :baseDataPath ?baseDataPath
+  } .
+  GRAPH :groupData {
+    ?group
+      a :Group ;
+      :markerId ?markerId ;
+      :descr ?groupDescr ;
+      :mainPicture ?mainPicture
+  } .
+  GRAPH :viewerCurrState {
+    ?dataViewer
+      a :DataViewer ;
+      :group ?group ;
+      :markerId ?markerId ;
+      :state ?state .
+    ?state
+      :menuState ?menuState ;
+      :sectionState ?sectionState ;
+      :contentState ?contentState ;
+      :stateCounter ?stateCounter .
+    ?menuState
+      a :Popping ;
+      :startPos ?menuStartPos ;
+      :startTime ?updateTime
+  } .
+  BIND( ?stateCounter + 1 AS ?newStateCounter ) .
+}
+

@@ -1,0 +1,36 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    a :DataViewer ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :state ?state .
+  ?state ?predState ?objState .
+}
+WHERE {
+  ?dataViewer
+    a :DataViewer ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :state ?state .
+  ?state
+    ?predState ?objState ;
+    :stateCount ?maxStateCount .
+  {
+    SELECT ?dataViewer (MAX(?stateCount) AS ?maxStateCount)
+     WHERE {
+      ?dataViewer
+        a :DataViewer ;
+        :state ?state .
+      ?state
+        :stateCount ?stateCount .
+     }
+     GROUP BY ?dataViewer
+  } .
+}
+

@@ -1,0 +1,59 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+  ?group
+    a :Group ;
+    :markerId ?markerId ;
+    :startSlide ?mainPictureSlide, ?longDescrSlide ;
+    :endSlide ?contactSlide ;
+    :project ?project .
+  ?mainPictureSlide
+    :id "1"^^xsd:integer ;
+    :imgURI ?mainPicture_imgURI .
+  ?longDescrSlide
+    :id "2"^^xsd:integer ;
+    :imgURI ?longDescr_imgURI .
+  ?contactSlide
+    :id ?contactSlideId ;
+    :imgURI ?contact_imgURI .
+  ?project
+    :order ?projectOrder ;
+    :slide ?projectSlide ;
+    :numImages ?numImages .
+  ?projectSlide
+    :id ?projectSlideId ;
+    :imgURI ?projectSlide_imgURI .
+}
+WHERE {
+  ?group
+    a :Group ;
+    :markerId ?markerId ;
+    :descr ?groupDescr ;
+    :mainPicture ?mainPicture ;
+    :longDescrImg ?longDescrImg ;
+    :contactQRCode ?contactQRCode ;
+    :project ?project .
+  ?project
+    :baseDir ?baseDir ;
+    :order ?projectOrder ;
+    :numImages ?numImages ;
+    :image ?imageName .
+  GRAPH :config { 
+    swi:GraphRoot
+     :baseDataPath ?baseDataPath .
+  }
+  BIND( URI( CONCAT( STR(:mainPictureSlide_), MD5(STR(?group)) ) ) AS ?mainPictureSlide ) .
+  BIND( URI( CONCAT( STR(:longDescrSlide_), MD5(STR(?group)) ) ) AS ?longDescrSlide ) .
+  BIND( URI( CONCAT( STR(:contactSlide_), MD5(STR(?group)) ) ) AS ?contactSlide ) .
+  BIND( CONCAT( ?baseDataPath, ?mainPicture ) AS ?mainPicture_imgURI ) .
+  BIND( CONCAT( ?baseDataPath, ?longDescrImg ) AS ?longDescr_imgURI ) .
+  BIND( CONCAT( ?baseDataPath, ?contactQRCode ) AS ?contact_imgURI ) .
+  BIND( CONCAT( ?baseDataPath, ?baseDir, ?imageName ) AS ?projectImage_imgURI ) .
+  BIND( xsd:integer(SUBSTR( ?imageName ,1,2)) AS ?projectImageId ) .
+}
+

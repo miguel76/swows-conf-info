@@ -9,7 +9,11 @@ CONSTRUCT {
     a :DataViewer ;
     :posX ?dataPosX ;
     :posY ?dataPosY ;
-    :angle ?dataAngle .
+    :angle ?dataAngle ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :imgURI ?slideImageURI ;
+    :contentTitle ?contentTitle .
 }
 WHERE {
   ?object
@@ -26,10 +30,13 @@ WHERE {
       :markerPosX ?markerPosX ;
       :markerPosY ?markerPosY .
   } .
-  GRAPH :viewerState {
+  GRAPH :viewerCurrState {
     ?dataViewer
       a :DataViewer ;
-      :markerId ?markerId .
+      :markerId ?markerId ;
+      :state ?state .
+    ?state :contentState ?contentState .
+    ?contentState :title ?contentTitle ; 
   } .
   BIND( ?objectX * xsd:double(?vpWidth) AS ?dataPosX ) .
   BIND( ?objectY * xsd:double(?vpHeight) AS ?dataPosY ) .

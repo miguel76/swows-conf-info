@@ -1,0 +1,213 @@
+@prefix :        <http://www.cattid.uniroma1.it/2012/arduinoDay#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix swi:   <http://www.swows.org/instance#> .
+
+:Arduino
+:project :OfficineArduino.
+
+:OfficineArduino
+  a :Project ;
+  :name "OfficineArduino" ;
+  :order "1"^^xsd:integer ;
+  :numImages "8"^^xsd:integer ;
+  :baseDir "Arduino/PROGETTI/OfficineArduino/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg" .
+
+:ScuolaRobotica
+:project :LaboratoriCorsi.
+
+:LaboratoriCorsi
+  a :Project ;
+  :name "LaboratoriCorsi" ;
+  :order "1"^^xsd:integer ;
+  :numImages "3"^^xsd:integer ;
+  :baseDir "ScuolaRobotica/PROGETTI/LaboratoriCorsi/" ;
+  :image "01.jpg", "02.jpg", "03.jpg" .
+
+:MondoDigitale
+  :project :Workshop, :RomeCup.
+
+:Workshop
+  a :Project ;
+  :name "Workshop" ;
+  :order "1"^^xsd:integer ;
+  :numImages "6"^^xsd:integer ;
+  :baseDir "MondoDigitale/PROGETTI/Workshop/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg" .
+
+:RomeCup
+  a :Project ;
+  :name "RomeCup" ;
+  :order "2"^^xsd:integer ;
+  :numImages "6"^^xsd:integer ;
+  :baseDir "MondoDigitale/PROGETTI/RomeCup/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg" .
+
+:ElettronicaIn
+:project :RivistaElettronicaIn, :TiDiGino.
+
+:RivistaElettronicaIn
+  a :Project ;
+  :name "RivistaElettronicaIn" ;
+  :order "1"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "ElettronicaIn/PROGETTI/RivistaElettronicaIn/" ;
+  :image "01.jpg", "02.jpg" .
+
+:TiDiGino
+  a :Project ;
+  :name "TiDiGino" ;
+  :order "2"^^xsd:integer ;
+  :numImages "1"^^xsd:integer ;
+  :baseDir "ElettronicaIn/PROGETTI/TiDiGino/" ;
+  :image "01.jpg" .
+
+:GAUSS
+:project :ProgettoMosca, :UnicubesatGG.
+
+:ProgettoMosca
+  a :Project ;
+  :name "ProgettoMosca" ;
+  :order "1"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "GAUSS/PROGETTI/ProgettoMosca/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:UnicubesatGG
+  a :Project ;
+  :name "UnicubesatGG" ;
+  :order "2"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "GAUSS/PROGETTI/UnicubesatGG/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:DiScienza
+:project :ArduinoDay2011, :FestivalScienzeGenova, :NotteRicercatori.
+
+:ArduinoDay2011
+  a :Project ;
+  :name "ArduinoDay2011" ;
+  :order "1"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "DiScienza/PROGETTI/ArduinoDay2011/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:FestivalScienzeGenova
+  a :Project ;
+  :name "FestivalScienzeGenova" ;
+  :order "2"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "DiScienza/PROGETTI/FestivalScienzeGenova/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:NotteRicercatori
+  a :Project ;
+  :name "NotteRicercatori" ;
+  :order "3"^^xsd:integer ;
+  :numImages "3"^^xsd:integer ;
+  :baseDir "DiScienza/PROGETTI/NotteRicercatori/" ;
+  :image "01.jpg", "02.jpg", "03.jpg" .
+
+:NYUPoly
+:project :PesceRobotico.
+
+:PesceRobotico
+  a :Project ;
+  :name "PesceRobotico" ;
+  :order "1"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "NYUPoly/PROGETTI/PesceRobotico/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:CATTID
+:project :Allergine, :Ardusumo, :Frontiers, :MobileApp, :NextStop, :ParcoAppiaAntica, :PLamp, :RomaEuropaFestival, :TestUsabilita, :TheFutureMood, :TheItalianMood.
+
+:Allergine
+  a :Project ;
+  :name "Allergine" ;
+  :order "1"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/Allergine/" ;
+  :image "01.jpg", "02.jpg" .
+
+:Ardusumo
+  a :Project ;
+  :name "Ardusumo" ;
+  :order "2"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/Ardusumo/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:Frontiers
+  a :Project ;
+  :name "Frontiers" ;
+  :order "3"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/Frontiers/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg" .
+
+:MobileApp
+  a :Project ;
+  :name "MobileApp" ;
+  :order "4"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/MobileApp/" ;
+  :image "01.jpg", "02.jpg" .
+
+:NextStop
+  a :Project ;
+  :name "NextStop" ;
+  :order "5"^^xsd:integer ;
+  :numImages "3"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/NextStop/" ;
+  :image "01.jpg", "02.jpg", "03.jpg" .
+
+:ParcoAppiaAntica
+  a :Project ;
+  :name "ParcoAppiaAntica" ;
+  :order "6"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/ParcoAppiaAntica/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:PLamp
+  a :Project ;
+  :name "PLamp" ;
+  :order "7"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/PLamp/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:RomaEuropaFestival
+  a :Project ;
+  :name "RomaEuropaFestival" ;
+  :order "8"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/RomaEuropaFestival/" ;
+  :image "01.jpg", "02.jpg" .
+
+:TestUsabilita
+  a :Project ;
+  :name "TestUsabilita" ;
+  :order "9"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/TestUsabilita/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg" .
+
+:TheFutureMood
+  a :Project ;
+  :name "TheFutureMood" ;
+  :order "10"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/TheFutureMood/" ;
+  :image "01.jpg", "02.jpg" .
+
+:TheItalianMood
+  a :Project ;
+  :name "TheItalianMood" ;
+  :order "11"^^xsd:integer ;
+  :numImages "6"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/TheItalianMood/" ;
+  :image "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg" .
+
+

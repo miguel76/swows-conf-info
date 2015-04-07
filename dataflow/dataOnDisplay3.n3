@@ -1,0 +1,100 @@
+@prefix :        <http://www.cattid.uniroma1.it/2012/arduinoDay#> .
+@prefix svg:     <http://uispin.org/svg#> .
+@prefix uix:     <http://www.swows.org/uix#> .
+@prefix tuio:    <http://www.swows.org/tuio#> .
+@prefix xml:    <http://www.swows.org/xml#> .
+@prefix sp:      <http://spinrdf.org/sp#> .
+@prefix spinx:   <http://www.swows.org/spinx#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix swi:   <http://www.swows.org/instance#> .
+@prefix rdfSyntax:   <http://www.swows.org/syntaxes/RDF/> .
+@prefix syntax:   <http://www.swows.org/syntaxes/> .
+@prefix query: <http://jena.hpl.hp.com/2003/07/query/> .
+
+swi:OutputDataset
+  a spinx:LoggedGraph ;
+  spinx:input [
+  a spinx:ConstructGraph ;
+  spinx:input
+      [ a spinx:InlineDataset ;
+        spinx:input swi:InputDataset ;
+        spinx:namedInput 
+          [ a spinx:NamedGraph ;
+            spinx:id :config ;
+            spinx:input 
+              [ a spinx:SelectGraph ;
+                spinx:id :config ;
+                spinx:input swi:InputDataset ]
+          ] ,
+          [ a spinx:NamedGraph ;
+            spinx:id :viewer ;
+            spinx:input :viewerCurrState ]
+      ] ;
+  spinx:config
+    [ a spinx:IncludedGraph ;
+      spinx:url <viewerPos3.sparql> ;
+      spinx:syntax query:SPARQL_11 ] ] .
+
+:viewerCurrState
+  a spinx:ConstructGraph ;
+  spinx:input :viewerState ;
+  spinx:config
+    [ a spinx:IncludedGraph ;
+      spinx:url <viewerCurrState3.sparql> ;
+      spinx:syntax query:SPARQL_11 ] .
+
+:viewerState
+  a spinx:LoggedGraph ;
+  spinx:input [
+  a spinx:UpdatableGraph ;
+  spinx:addGraph [
+    a spinx:UnionGraph ;
+    spinx:input :viewerStateNew
+  ] ;
+  spinx:deleteGraph :viewerStateDelete ; ] .
+
+:viewerStateNew
+  a spinx:ConstructGraph ;
+  spinx:input
+      [ a spinx:InlineDataset ;
+        spinx:input swi:InputDataset ;
+        spinx:namedInput 
+          [ a spinx:NamedGraph ;
+            spinx:id :config ;
+            spinx:input 
+              [ a spinx:SelectGraph ;
+                spinx:id :config ;
+                spinx:input swi:InputDataset ]
+          ] ,
+          [ a spinx:NamedGraph ;
+            spinx:id :viewerCurrState ;
+            spinx:input :viewerCurrState
+          ] ,
+          [ a spinx:NamedGraph ;
+            spinx:id :groupData ;
+            spinx:input 
+          [ a spinx:SelectGraph ;
+            spinx:id :groupData ;
+            spinx:input swi:InputDataset ] ]
+      ] ;
+  spinx:config
+    [ a spinx:IncludedGraph ;
+      spinx:url <viewerStateNew3.sparql> ;
+      spinx:syntax query:SPARQL_11 ] .
+
+:viewerStateDelete
+  a spinx:ConstructGraph ;
+  spinx:input
+      [ a spinx:InlineDataset ;
+        spinx:input swi:InputDataset ;
+        spinx:namedInput 
+          [ a spinx:NamedGraph ;
+            spinx:id :viewerState ;
+            spinx:input :viewerState
+          ] 
+      ] ;
+  spinx:config
+    [ a spinx:IncludedGraph ;
+      spinx:url <viewerStateDelete3.sparql> ;
+      spinx:syntax query:SPARQL_11 ] .
+

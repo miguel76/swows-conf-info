@@ -7,21 +7,117 @@ PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 CONSTRUCT {
 
-  doc:layer_polaroid xml:hasChild ?use_polaroid .
-  ?use_polaroid 
+  doc:layer_polaroid xml:hasChild ?polaroid_envelope .
+
+  ?polaroid_envelope
     a xml:Element ;
     xml:namespace <http://www.w3.org/2000/svg> ;
-    xml:nodeName "use"^^xsd:string ;
-    xml:hasAttribute ?href_polaroid, ?transform_polaroid .
-  ?href_polaroid
-    a xml:Attr ;
-    xml:nodeName "href"^^xsd:string ;
-    xml:namespace <http://www.w3.org/1999/xlink> ;
-    xml:nodeValue "#polaroid"^^xsd:string .
+    xml:nodeName "g"^^xsd:string ;
+    xml:hasAttribute ?transform_polaroid ;
+    xml:hasChild ?polaroid .
   ?transform_polaroid
     a xml:Attr ;
     xml:nodeName "transform"^^xsd:string ;
     xml:nodeValue ?translate_polaroid .
+
+  ?polaroid 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "g"^^xsd:string ;
+    xml:hasAttribute :transform_polaroid, ?polaroid_id ;
+    xml:firstChild ?use_ombra_polaroid .
+  :transform_polaroid
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue "translate(-161 -289)"^^xsd:string .
+  ?use_ombra_polaroid 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "use"^^xsd:string ;
+    xml:hasAttribute :href_ombra_polaroid ;
+    xml:nextSibling ?use_content_bg .
+  :href_ombra_polaroid
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue "#ombra_polaroid"^^xsd:string .
+  ?use_content_bg 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "use"^^xsd:string ;
+    xml:hasAttribute :href_content_bg ;
+    xml:nextSibling ?content_title .
+  :href_content_bg
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue "#content_bg"^^xsd:string .
+
+  ?content_title 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "text"^^xsd:string ;
+    xml:hasAttribute :content_title_transform, :content_title_fill, :content_title_ff, :content_title_fs ;
+    xml:hasChild ?content_title_text ;
+    xml:nextSibling ?use_freccia .
+  :content_title_transform
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue "translate(45 214)"^^xsd:string .
+  :content_title_fill
+    a xml:Attr ;
+    xml:nodeName "fill"^^xsd:string ;
+    xml:nodeValue "#FFFFFF"^^xsd:string .
+  :content_title_ff
+    a xml:Attr ;
+    xml:nodeName "font-family"^^xsd:string ;
+    xml:nodeValue "'NeoSans-Medium'"^^xsd:string .
+  :content_title_fs
+    a xml:Attr ;
+    xml:nodeName "font-size"^^xsd:string ;
+    xml:nodeValue "12.3084"^^xsd:string .
+  ?content_title_text 
+    a xml:Text ;
+    xml:hasChild ?content_title_text_value .
+
+  ?use_freccia 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "use"^^xsd:string ;
+    xml:hasAttribute ?transform_freccia, :href_freccia ;
+    xml:nextSibling ?dot_container .
+   :href_freccia
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue "#freccia"^^xsd:string .
+  ?transform_freccia
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue ?translate_freccia .
+
+  ?dot_container 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "g"^^xsd:string ;
+    xml:hasChild ?dot .
+  ?dot 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "circle"^^xsd:string ;
+    xml:hasAttribute ?dot_cx, ?dot_cy, :dot_r .
+  ?dot_cx
+    a xml:Attr ;
+    xml:nodeName "cx"^^xsd:string ;
+    xml:nodeValue ?dot_cx_value .
+  ?dot_cy
+    a xml:Attr ;
+    xml:nodeName "cy"^^xsd:string ;
+    xml:nodeValue ?dot_cy_value .
+  :dot_r
+    a xml:Attr ;
+    xml:nodeName "r"^^xsd:string ;
+    xml:nodeValue "40"^^xsd:string .
 
 }
 WHERE {
@@ -29,10 +125,32 @@ WHERE {
     a :DataViewer ;
     :posX ?dataPosX ;
     :posY ?dataPosY ;
-    :angle ?dataAngle .
-  BIND( URI( CONCAT( STR(:use_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?use_polaroid ) .
-  BIND( URI( CONCAT( STR(:href_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?href_polaroid ) .
+    :angle ?dataAngle ;
+    :contentTitle ?content_title_text_value ;
+    :menuPosX ?menuPosX .
+  OPTIONAL {
+    ?cursor
+      :polaroid ?dataViewer ;
+      :relativeX ?relativeX ;
+      :relativeY ?relativeY .
+  }
+  BIND( URI( CONCAT( STR(:polaroid_envelope_), MD5(STR(?dataViewer)) ) ) AS ?polaroid_envelope ) .
+  BIND( URI( CONCAT( STR(:polaroid_), MD5(STR(?dataViewer)) ) ) AS ?polaroid ) .
   BIND( URI( CONCAT( STR(:transform_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?transform_polaroid ) .
+  BIND( URI( CONCAT( STR(:use_ombra_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?use_ombra_polaroid ) .
+  BIND( URI( CONCAT( STR(:use_content_bg_), MD5(STR(?dataViewer)) ) ) AS ?use_content_bg ) .
+
+  BIND( URI( CONCAT( STR(:content_title_), MD5(STR(?dataViewer)) ) ) AS ?content_title ) .
+  BIND( URI( CONCAT( STR(:content_title_text_), MD5(STR(?dataViewer)) ) ) AS ?content_title_text ) .
+  BIND( URI( CONCAT( STR(:use_freccia_), MD5(STR(?dataViewer)) ) ) AS ?use_freccia ) .
+  BIND( URI( CONCAT( STR(:transform_freccia_), MD5(STR(?dataViewer)) ) ) AS ?transform_freccia ) .
+  BIND( URI( CONCAT( STR(:dot_container_), MD5(STR(?dataViewer)) ) ) AS ?dot_container ) .
+  BIND( URI( CONCAT( STR(:dot_), MD5( CONCAT( STR(?dataViewer), STR(?cursor) ) ) ) ) AS ?dot ) .
+  BIND( URI( CONCAT( STR(:dot_cx_), MD5( CONCAT( STR(?dataViewer), STR(?cursor) ) ) ) ) AS ?dot_cx ) .
+  BIND( URI( CONCAT( STR(:dot_cy_), MD5( CONCAT( STR(?dataViewer), STR(?cursor) ) ) ) ) AS ?dot_cy ) .
+  BIND( STR(?relativeX) AS ?dot_cx_value ) .
+  BIND( STR(?relativeY) AS ?dot_cy_value ) .
   BIND( CONCAT( "translate(", STR(?dataPosX), " ", STR(?dataPosY), ") rotate(", STR(?dataAngle), ")" ) AS ?translate_polaroid ) .
+  BIND( CONCAT( "translate(", STR(?menuPosX), " 0)" ) AS ?translate_freccia ) .
 }
 

@@ -1,0 +1,44 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    a :DataViewer ;
+    :posX ?dataPosX ;
+    :posY ?dataPosY ;
+    :angle ?dataAngle ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :imgURI ?slideImageURI  .
+}
+WHERE {
+  ?object
+    a tuio:Object ;
+    tuio:position ?point ;
+    tuio:angle ?objectAngle ;
+    tuio:markerId ?markerId .
+  ?point tuio:x ?objectX .
+  ?point tuio:y ?objectY .
+  GRAPH :config {
+    swi:GraphRoot
+      :vpWidth ?vpWidth ;
+      :vpHeight ?vpHeight ;
+      :markerPosX ?markerPosX ;
+      :markerPosY ?markerPosY .
+  } .
+  GRAPH :viewer {
+    ?dataViewer
+      a :DataViewer ;
+      :group ?group ;
+      :markerId ?markerId ;
+      :state ?state .
+    ?state :imgURI ?slideImageURI .
+  } .
+  BIND( ?objectX * xsd:double(?vpWidth) AS ?dataPosX ) .
+  BIND( ?objectY * xsd:double(?vpHeight) AS ?dataPosY ) .
+  BIND( ?objectAngle * 180 / afn:pi() + 90 AS ?dataAngle ) .
+}
+

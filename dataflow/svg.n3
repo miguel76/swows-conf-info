@@ -14,13 +14,14 @@
 
 swi:OutputDataset
   a spinx:UnionGraph ;
+  spinx:input :svgDoc ;
+#  spinx:input :svgForEachPolaroid ; 
   spinx:input
     [ a spinx:LoggedGraph ;
-  spinx:input :svgVar ]; 
+  spinx:input :svgVar ] . 
 #  spinx:input
 #    [ a spinx:LoggedGraph ;
 #  spinx:input :svgBoxesLayers ;
-  spinx:input :svgDoc .
 
 :svgVar
   a spinx:ConstructGraph ;
@@ -33,18 +34,20 @@ swi:OutputDataset
           spinx:input
             [ a spinx:SelectGraph ;
               spinx:id :config ;
-              spinx:input swi:InputDataset ] ] ;
-      spinx:namedInput 
-        [ a spinx:NamedGraph ;
-          spinx:id :svgDoc ;
-          spinx:input :svgDoc ] ] ;
+              spinx:input swi:InputDataset ] ] ] ;
+#      spinx:namedInput 
+#        [ a spinx:NamedGraph ;
+#          spinx:id :svgDoc ;
+#          spinx:input :svgDoc ] ] ;
   spinx:config
     [ a spinx:IncludedGraph ;
-      spinx:url <svg.sparql> ;
-      spinx:syntax query:SPARQL_11 ]
-.
+      spinx:url <svg3.sparql> ;
+      spinx:syntax query:SPARQL_11 ] .
 
 :svgDoc
   a spinx:IncludedGraph ;
   spinx:url <../svg/tavolo.svg> ;
   spinx:syntax syntax:XML .
+
+
+

@@ -9,16 +9,21 @@ CONSTRUCT {
     a :DataViewer ;
     :group ?group ;
     :markerId ?markerId ;
-    :section :Home ;
+    :state ?state ;
+    :dependentData ?state, ?menuState, ?sectionState, ?contentState .
+  ?state
     :menuState ?menuState ;
-    :content ?content ;
-    :dependentData ?menuState, ?content .
+    :sectionState ?sectionState ;
+    :contentState ?contentState ;
+    :stateCounter "1"^^xsd:integer .
   ?menuState
     a :Popping ;
     :startPos ?menuStartPos ;
-    :startTime ?updateTime ;
-    :stateCounter "1"^^xsd:integer .
-  ?content
+    :startTime ?updateTime  .
+  ?sectionState
+    :section :Home ;
+    :prevSection :Home .
+  ?contentState
     a :ImageContent ;
     :uri ?imageUri ;
     :title ?groupDescr ; 
@@ -46,8 +51,10 @@ WHERE {
       a :DataViewer ;
       :markerId ?markerId  } } .
   BIND( URI(CONCAT( STR(:dataViewer_), MD5( STR(?object) ) ) ) AS ?dataViewer ) .
+  BIND( URI(CONCAT( STR(:state_), MD5( STR(?object) ) ) ) AS ?state ) .
   BIND( URI(CONCAT( STR(:menuState_), MD5( STR(?object) ) ) ) AS ?menuState ) .
-  BIND( URI(CONCAT( STR(:content_), MD5( STR(?object) ) ) ) AS ?content ) .
+  BIND( URI(CONCAT( STR(:sectionState_), MD5( STR(?object) ) ) ) AS ?sectionState ) .
+  BIND( URI(CONCAT( STR(:contentState_), MD5( STR(?object) ) ) ) AS ?contentState ) .
   BIND( CONCAT( ?baseDataPath, ?mainPicture ) AS ?imageUri ) .
 }
 

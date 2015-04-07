@@ -1,0 +1,21 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX xml:   <http://www.swows.org/xml#>
+PREFIX doc:   <http://www.swows.org/xml/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+  ?new_subject ?predicate ?object .
+}
+WHERE {
+  ?dataViewer
+    a :DataViewer .
+  GRAPH :svgDoc {
+      ?subject ?predicate ?object .
+      doc:forEachPolaroid xml:hasChild+ ?subject .
+  } .
+  FILTER ( ISLITERAL( ?object ) ) .
+  BIND( URI( CONCAT( STR(?subject), "_", MD5(STR(?dataViewer)) ) ) AS ?new_subject ) .
+}
+

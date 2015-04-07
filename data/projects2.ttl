@@ -1,0 +1,512 @@
+@prefix :        <http://www.cattid.uniroma1.it/2012/arduinoDay#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix swi:   <http://www.swows.org/instance#> .
+
+:Arduino
+:project :OfficineArduino.
+
+:OfficineArduino
+  a :Project ;
+  :name "OfficineArduino" ;
+  :order "1"^^xsd:integer ;
+  :numImages "8"^^xsd:integer ;
+  :baseDir "Arduino/PROGETTI/OfficineArduino/" ;
+  :image :s1 , :s2, :s3, :s4, :s5, :s6, :s7, :s8 .
+
+:s1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:s2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:s3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:s4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:s5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+:s6
+  :id "6"^^xsd:integer ;
+  :uri "06.jpg".
+:s7
+  :id "7"^^xsd:integer ;
+  :uri "07.jpg".
+:s8
+  :id "8"^^xsd:integer ;
+  :uri "08.jpg".
+
+
+:ScuolaRobotica
+:project :LaboratoriCorsi.
+
+:LaboratoriCorsi
+  a :Project ;
+  :name "LaboratoriCorsi" ;
+  :order "1"^^xsd:integer ;
+  :numImages "3"^^xsd:integer ;
+  :baseDir "ScuolaRobotica/PROGETTI/LaboratoriCorsi/" ;
+  :image :sa1, :sa2, :sa3 .
+
+:sa1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sa2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sa3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+
+:MondoDigitale
+  :project :Workshop, :RomeCup.
+
+:Workshop
+  a :Project ;
+  :name "Workshop" ;
+  :order "1"^^xsd:integer ;
+  :numImages "6"^^xsd:integer ;
+  :baseDir "MondoDigitale/PROGETTI/Workshop/" ;
+  :image :sb1 , :sb2, :sb3, :sb4, :sb5, :sb6 .
+
+:sb1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sb2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sb3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sb4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sb5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+:sb6
+  :id "6"^^xsd:integer ;
+  :uri "06.jpg".
+
+:RomeCup
+  a :Project ;
+  :name "RomeCup" ;
+  :order "2"^^xsd:integer ;
+  :numImages "6"^^xsd:integer ;
+  :baseDir "MondoDigitale/PROGETTI/RomeCup/" ;
+  :image :sc1 , :sc2, :sc3, :sc4, :sc5, :sc6 .
+
+:sc1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sc2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sc3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sc4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sc5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+:sc6
+  :id "6"^^xsd:integer ;
+  :uri "06.jpg".
+
+
+:ElettronicaIn
+:project :RivistaElettronicaIn, :TiDiGino.
+
+:RivistaElettronicaIn
+  a :Project ;
+  :name "RivistaElettronicaIn" ;
+  :order "1"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "ElettronicaIn/PROGETTI/RivistaElettronicaIn/" ;
+  :image :sd1 , :sd2 .
+
+:sd1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sd2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+
+:TiDiGino
+  a :Project ;
+  :name "TiDiGino" ;
+  :order "2"^^xsd:integer ;
+  :numImages "1"^^xsd:integer ;
+  :baseDir "ElettronicaIn/PROGETTI/TiDiGino/" ;
+  :image :se1 .
+
+:se1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+
+:GAUSS
+:project :ProgettoMosca, :UnicubesatGG.
+
+:ProgettoMosca
+  a :Project ;
+  :name "ProgettoMosca" ;
+  :order "1"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "GAUSS/PROGETTI/ProgettoMosca/" ;
+  :image :sf1 , :sf2, :sf3, :sf4 .
+
+:sf1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sf2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sf3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sf4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+
+:UnicubesatGG
+  a :Project ;
+  :name "UnicubesatGG" ;
+  :order "2"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "GAUSS/PROGETTI/UnicubesatGG/" ;
+  :image :sg1 , :sg2, :sg3, :sg4 .
+
+:sg1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sg2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sg3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sg4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+
+:DiScienza
+:project :ArduinoDay2011, :FestivalScienzeGenova, :NotteRicercatori.
+
+:ArduinoDay2011
+  a :Project ;
+  :name "ArduinoDay2011" ;
+  :order "1"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "DiScienza/PROGETTI/ArduinoDay2011/" ;
+  :image :sh1 , :sh2, :sh3, :sh4 .
+
+:sh1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sh2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sh3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sh4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+
+
+:FestivalScienzeGenova
+  a :Project ;
+  :name "FestivalScienzeGenova" ;
+  :order "2"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "DiScienza/PROGETTI/FestivalScienzeGenova/" ;
+  :image :si1 , :si2, :si3, :si4 .
+
+:si1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:si2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:si3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:si4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+
+:NotteRicercatori
+  a :Project ;
+  :name "NotteRicercatori" ;
+  :order "3"^^xsd:integer ;
+  :numImages "3"^^xsd:integer ;
+  :baseDir "DiScienza/PROGETTI/NotteRicercatori/" ;
+  :image :sj1 , :sj2, :sj3 .
+
+:sj1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sj2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sj3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+
+:NYUPoly
+:project :PesceRobotico.
+
+:PesceRobotico
+  a :Project ;
+  :name "PesceRobotico" ;
+  :order "1"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "NYUPoly/PROGETTI/PesceRobotico/" ;
+  :image :sk1 , :sk2, :sk3, :sk4, :sk5 .
+
+:sk1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sk2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sk3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sk4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sk5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+
+:CATTID
+:project :Allergine, :Ardusumo, :Frontiers, :MobileApp, :NextStop, :ParcoAppiaAntica, :PLamp, :RomaEuropaFestival, :TestUsabilita, :TheFutureMood, :TheItalianMood.
+
+:Allergine
+  a :Project ;
+  :name "Allergine" ;
+  :order "1"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/Allergine/" ;
+  :image :sl1 , :sl2 .
+
+:sl1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sl2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+
+:Ardusumo
+  a :Project ;
+  :name "Ardusumo" ;
+  :order "2"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/Ardusumo/" ;
+  :image :sm1 , :sm2, :sm3, :sm4, :sm5 .
+
+:sm1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sm2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sm3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sm4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sm5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+
+:Frontiers
+  a :Project ;
+  :name "Frontiers" ;
+  :order "3"^^xsd:integer ;
+  :numImages "4"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/Frontiers/" ;
+  :image :sn1, :sn2, :sn3, :sn4 .
+
+:sn1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sn2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sn3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sn4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+
+:MobileApp
+  a :Project ;
+  :name "MobileApp" ;
+  :order "4"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/MobileApp/" ;
+  :image :so1, :so2 .
+
+:so1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:so2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+
+:NextStop
+  a :Project ;
+  :name "NextStop" ;
+  :order "5"^^xsd:integer ;
+  :numImages "3"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/NextStop/" ;
+  :image :sp1 , :sp2, :sp3.
+
+:sp1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sp2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sp3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+
+:ParcoAppiaAntica
+  a :Project ;
+  :name "ParcoAppiaAntica" ;
+  :order "6"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/ParcoAppiaAntica/" ;
+  :image :sq1 , :sq2, :sq3, :sq4, :sq5 .
+
+:sq1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sq2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sq3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sq4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sq5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+
+:PLamp
+  a :Project ;
+  :name "PLamp" ;
+  :order "7"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/PLamp/" ;
+  :image :sr1 , :sr2, :sr3, :sr4, :sr5 .
+
+:sr1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sr2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sr3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sr4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sr5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+
+:RomaEuropaFestival
+  a :Project ;
+  :name "RomaEuropaFestival" ;
+  :order "8"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/RomaEuropaFestival/" ;
+  :image :ss1 , :ss2 .
+
+:ss1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:ss2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+
+:TestUsabilita
+  a :Project ;
+  :name "TestUsabilita" ;
+  :order "9"^^xsd:integer ;
+  :numImages "5"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/TestUsabilita/" ;
+  :image :st1 , :st2, :st3, :st4, :st5 .
+
+:st1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:st2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:st3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:st4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:st5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+
+:TheFutureMood
+  a :Project ;
+  :name "TheFutureMood" ;
+  :order "10"^^xsd:integer ;
+  :numImages "2"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/TheFutureMood/" ;
+  :image :su1 , :su2 .
+
+:su1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:su2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+
+:TheItalianMood
+  a :Project ;
+  :name "TheItalianMood" ;
+  :order "11"^^xsd:integer ;
+  :numImages "6"^^xsd:integer ;
+  :baseDir "CATTID/PROGETTI/TheItalianMood/" ;
+  :image :sv1 , :sv2, :sv3, :sv4, :sv5 .
+
+:sv1
+  :id "1"^^xsd:integer ;
+  :uri "01.jpg".
+:sv2
+  :id "2"^^xsd:integer ;
+  :uri "02.jpg".
+:sv3
+  :id "3"^^xsd:integer ;
+  :uri "03.jpg".
+:sv4
+  :id "4"^^xsd:integer ;
+  :uri "04.jpg".
+:sv5
+  :id "5"^^xsd:integer ;
+  :uri "05.jpg".
+:sv6
+  :id "6"^^xsd:integer ;
+  :uri "06.jpg".
+
+

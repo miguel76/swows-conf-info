@@ -1,0 +1,81 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?group
+    a :Group ;
+    :markerId ?markerId ;
+    :slide ?mainPictureSlide, ?longDescrSlide, ?contactSlide, ?projectImageSlide .
+  ?mainPictureSlide
+    :id "1"^^xsd:integer ;
+    :imgURI ?mainPicture_imgURI .
+  ?longDescrSlide
+    :id "2"^^xsd:integer ;
+    :imgURI ?longDescr_imgURI .
+  ?projectImageSlide
+    :id ?projectImageId ;
+    :imgURI ?projectImage_imgURI .
+  ?contactSlide
+    :id ?contactSlideId ;
+    :imgURI ?contact_imgURI .
+}
+WHERE {
+  ?group
+    a :Group ;
+    :markerId ?markerId ;
+    :descr ?groupDescr ;
+    :mainPicture ?mainPicture ;
+    :longDescrImg ?longDescrImg ;
+    :contactQRCode ?contactQRCode ;
+    :project ?project .
+  ?project
+    :baseDir ?baseDir ;
+    :image ?image_uri .
+  GRAPH :config { 
+    swi:GraphRoot
+     :baseDataPath ?baseDataPath .
+  }
+  BIND( URI( CONCAT( STR(:mainPictureSlide_), MD5(STR(?group)) ) ) AS ?mainPictureSlide ) .
+  BIND( URI( CONCAT( STR(:longDescrSlide_), MD5(STR(?group)) ) ) AS ?longDescrSlide ) .
+  BIND( URI( CONCAT( STR(:contactSlide_), MD5(STR(?group)) ) ) AS ?contactSlide ) .
+  BIND( CONCAT( ?baseDataPath, ?mainPicture ) AS ?mainPicture_imgURI ) .
+  BIND( CONCAT( ?baseDataPath, ?longDescrImg ) AS ?longDescr_imgURI ) .
+  BIND( CONCAT( ?baseDataPath, ?contactQRCode ) AS ?contact_imgURI ) .
+  BIND( CONCAT( ?baseDataPath, ?baseDir, ?image_uri ) AS ?projectImage_imgURI ) .
+  BIND( URI( CONCAT( STR(:projectImageSlide_), MD5(CONCAT( STR(?group), STR(?project) , STR(?image_uri) ) ) ) ) AS ?projectImageSlide ) .
+  {
+    SELECT ?group ?project (COUNT(?project2Image) AS ?prevImgsOfOtherProjs)
+     WHERE {
+       ?group :project ?project, ?project2 .
+       ?project :name ?projectName .
+       ?project2
+         :name ?project2Name ;
+         :image ?project2Image .
+       FILTER( ?project2 != ?project && ?project2Name < ?projectName )
+     }
+     GROUP BY ?group ?project
+  }
+  {
+    SELECT ?group ?project ?image (COUNT(?image2 ) AS ?prevImgsInProj)
+     WHERE {
+       ?group :project ?project .
+       ?project :image ?image2 .
+       FILTER( ?image2 < ?image )
+     }
+     GROUP BY ?group ?project ?image
+  }
+  BIND( ?prevImgsOfOtherProjs + ?prevImgsInProj + 3 AS ?projectImageId ) .
+  {
+    SELECT ?group (COUNT(?projectImage) AS ?totImgs)
+     WHERE {
+       ?group :project ?project .
+       ?project :image ?projectImage
+     }
+     GROUP BY ?group
+  }
+  BIND( ?totImgs + 3 AS ?contactSlideId ) .
+}
+

@@ -1,0 +1,28 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    :menuPosX ?menuPosX .
+}
+WHERE {
+  ?cursor
+    :polaroid ?dataViewer ;
+    :relativeX ?relativeX ;
+    :relativeY ?relativeY .
+  GRAPH :viewerCurrState {
+    ?dataViewer
+      a :DataViewer ;
+      :markerId ?markerId ;
+      :state ?state .
+    ?state :menuState ?menuState .
+    ?menuState
+        a :Dragging ;
+        :cursor ?cursor .
+  } .
+  BIND( IF( ?relativeX < 0, 0, IF( ?relativeX > 260, 260, ?relativeX ) ) AS ?menuPosX ) .
+}
+

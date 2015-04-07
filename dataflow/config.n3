@@ -8,6 +8,8 @@ swi:GraphRoot
   :markerPosX "161"^^xsd:double ;
   :markerPosY "289"^^xsd:double ;
   :menuStartPos "-70"^^xsd:double  ;
-  :baseDataPath "../data/" .
+  :menuSpeed "70"^^xsd:double  ;
+  :baseDataPath "../data/" ;
+  :baseSpeakerImgPath "../data/FotoPartecipanti/" .
 
 

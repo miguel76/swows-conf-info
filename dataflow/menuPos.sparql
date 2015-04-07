@@ -1,0 +1,37 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+
+CONSTRUCT {
+  ?dataViewer
+    :menuPosX ?menuPosX .
+}
+WHERE {
+  tuio:defaultSource tuio:updateTime ?updateTime .
+  GRAPH :config {
+    swi:GraphRoot
+      :menuSpeed ?menuSpeed .
+  } .
+  GRAPH :viewerCurrState {
+    ?dataViewer
+      a :DataViewer ;
+      :markerId ?markerId ;
+      :state ?state .
+    ?state :menuState ?menuState .
+    ?menuState
+        a :Popping ;
+        :startPos ?startPos ;
+        :startTime ?startTime  .
+  } .
+  BIND( ?updateTime - ?startTime AS ?delta ) .
+  BIND( IF(?startPos < 0, IF (?delta * ?menuSpeed + ?startPos > 0, 0, ?delta * ?menuSpeed + ?startPos ),
+        IF(?startPos < 120, IF (- ?delta * ?menuSpeed + ?startPos < 0, 0, - ?delta * ?menuSpeed + ?startPos ),
+        IF(?startPos < 240, IF (?delta * ?menuSpeed + ?startPos > 240, 240, ?delta * ?menuSpeed + ?startPos ),
+        IF (- ?delta * ?menuSpeed + ?startPos < 240, 240, - ?delta * ?menuSpeed + ?startPos ) ) ) ) 
+    AS ?menuPosX ) .
+  BIND( ?objectY * xsd:double(?vpHeight) AS ?dataPosY ) .
+  BIND( ?objectAngle * 180 / afn:pi() + 90 AS ?dataAngle ) .
+}
+

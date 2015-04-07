@@ -1,0 +1,48 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX tuio:  <http://www.swows.org/tuio#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:   <http://jena.hpl.hp.com/ARQ/function#>
+PREFIX fs:    <http://www.swows.org/function#>
+
+CONSTRUCT {
+  ?cursor
+    :polaroid ?dataViewer ;
+    :relativeX ?relativeX ;
+    :relativeY ?relativeY .
+}
+WHERE {
+  ?object
+    a tuio:Object ;
+    tuio:position ?objectPoint ;
+    tuio:angle ?objectAngle ;
+    tuio:markerId ?markerId .
+  ?objectPoint
+    tuio:x ?objectX ;
+    tuio:y ?objectY .
+  ?cursor
+    a tuio:Cursor ;
+    tuio:position ?point .
+  ?point
+    tuio:x ?cursorX ;
+    tuio:y ?cursorY .
+  GRAPH :config {
+    swi:GraphRoot
+      :vpWidth ?vpWidth ;
+      :vpHeight ?vpHeight ;
+      :markerPosX ?markerPosX ;
+      :markerPosY ?markerPosY
+  } .
+  GRAPH :viewerCurrState {
+    ?dataViewer
+      a :DataViewer ;
+      :markerId ?markerId .
+  } .
+  BIND( (?cursorX - ?objectX ) * ?vpWidth AS ?deltaX ) .
+  BIND( (- ?cursorY + ?objectY ) * ?vpHeight AS ?deltaY ) .
+  BIND( ?deltaX * fs:sin(?objectAngle) - ?deltaY * fs:cos(?objectAngle) AS ?rotatedX ) .
+  BIND( ?deltaX * fs:cos(?objectAngle) + ?deltaY * fs:sin(?objectAngle) AS ?rotatedY ) .
+  BIND( ?rotatedX  AS ?relativeX ) .
+  BIND( -?rotatedY  AS ?relativeY ) .
+}
+

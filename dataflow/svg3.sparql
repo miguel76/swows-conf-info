@@ -1,0 +1,106 @@
+PREFIX :      <http://www.cattid.uniroma1.it/2012/arduinoDay#>
+PREFIX xml:   <http://www.swows.org/xml#>
+PREFIX doc:   <http://www.swows.org/xml/instance#>
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+PREFIX swi:   <http://www.swows.org/instance#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+
+  doc:layer_polaroid xml:hasChild ?polaroid_envelope .
+
+  ?polaroid_envelope
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "g"^^xsd:string ;
+    xml:hasAttribute ?transform_polaroid ;
+    xml:hasChild ?polaroid .
+  ?transform_polaroid
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue ?translate_polaroid .
+
+  ?polaroid 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "g"^^xsd:string ;
+    xml:hasAttribute :transform_polaroid ;
+    xml:firstChild ?use_ombra_polaroid .
+  :transform_polaroid
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue "translate(-161 -289)"^^xsd:string .
+  ?use_ombra_polaroid 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "use"^^xsd:string ;
+    xml:hasAttribute :href_ombra_polaroid ;
+    xml:nextSibling ?use_content_bg .
+  :href_ombra_polaroid
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue "#ombra_polaroid"^^xsd:string .
+  ?use_content_bg 
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "use"^^xsd:string ;
+    xml:hasAttribute :href_content_bg ;
+    xml:nextSibling ?image_content .
+  :href_content_bg
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue "#content_bg"^^xsd:string .
+
+  ?image_content
+    a xml:Element ;
+    xml:namespace <http://www.w3.org/2000/svg> ;
+    xml:nodeName "image"^^xsd:string ;
+    xml:hasAttribute :image_content_width, :image_content_height, ?image_content_href, :image_content_transform .
+  :image_content_width
+    a xml:Attr ;
+    xml:nodeName "width"^^xsd:string ;
+    xml:nodeValue "280"^^xsd:string .
+  :image_content_height
+    a xml:Attr ;
+    xml:nodeName "height"^^xsd:string ;
+    xml:nodeValue "204"^^xsd:string .
+  ?image_content_href
+    a xml:Attr ;
+    xml:nodeName "href"^^xsd:string ;
+    xml:namespace <http://www.w3.org/1999/xlink> ;
+    xml:nodeValue ?slideImageURI .
+  :image_content_transform
+    a xml:Attr ;
+    xml:nodeName "transform"^^xsd:string ;
+    xml:nodeValue "translate(11 13)"^^xsd:string .
+
+}
+WHERE {
+  ?dataViewer
+    a :DataViewer ;
+    :group ?group ;
+    :markerId ?markerId ;
+    :imgURI ?slideImageURI ;
+    :posX ?dataPosX ;
+    :posY ?dataPosY ;
+    :angle ?dataAngle .
+  OPTIONAL {
+    ?cursor
+      :polaroid ?dataViewer ;
+      :relativeX ?relativeX ;
+      :relativeY ?relativeY .
+  }
+  BIND( URI( CONCAT( STR(:polaroid_envelope_), MD5(STR(?dataViewer)) ) ) AS ?polaroid_envelope ) .
+  BIND( URI( CONCAT( STR(:polaroid_), MD5(STR(?dataViewer)) ) ) AS ?polaroid ) .
+  BIND( URI( CONCAT( STR(:transform_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?transform_polaroid ) .
+  BIND( URI( CONCAT( STR(:use_ombra_polaroid_), MD5(STR(?dataViewer)) ) ) AS ?use_ombra_polaroid ) .
+  BIND( URI( CONCAT( STR(:use_content_bg_), MD5(STR(?dataViewer)) ) ) AS ?use_content_bg ) .
+
+  BIND( URI( CONCAT( STR(:image_content_), MD5(STR(?dataViewer)) ) ) AS ?image_content ) .
+  BIND( URI( CONCAT( STR(:image_content_href_), MD5(STR(?dataViewer)) ) ) AS ?image_content_href ) .
+
+  BIND( CONCAT( "translate(", STR(?dataPosX), " ", STR(?dataPosY), ") rotate(", STR(?dataAngle), ")" ) AS ?translate_polaroid ) .
+}
+

@@ -43,7 +43,7 @@ swi:OutputDataset
           spinx:input :groupData ] ] ;
   spinx:config [
     a spinx:IncludedGraph ;
-    spinx:url <dataOnDisplay.n3> ;
+    spinx:url <dataOnDisplay3.n3> ;
     spinx:syntax rdfSyntax:N3 ] .
 
 :config
